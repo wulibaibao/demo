@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+  <meta charset="utf-8">
+  <head>
+    <title>Socket.IO chat</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font: 13px Helvetica, Arial; }
+      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
+      form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
+      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+      #messages { list-style-type: none; margin: 0; padding: 0; }
+      #messages li { padding: 5px 10px; }
+      #messages li:nth-child(odd) { background: #eee; }
+    </style>
+  </head>
+  <body>
+  <a>点我</a>
+      <ul id="messages"></ul>
+      <input id="m" autocomplete="off" /><button>Send</button>
+  </body>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+  var socket = io('http://10.4.83.180/');
+  var ul = document.querySelector('#messages');
+
+  socket.on('news', function (data) {
+      console.log(data);
+      
+      if(data.messages){
+
+          clearUl ();
+
+          for(var i = 0 ; i < data.messages.length; i ++ ){
+
+              var li = document.createElement('li');
+
+              li.innerHTML = data.messages[i];
+
+              ul.appendChild(li);
+          }
+      }
+
+      var sendBtn = document.querySelectorAll('button')[0];
+      var message = document.querySelector('#m')
+      
+      sendBtn.onclick = ()=>{
+          clearUl ();
+          socket.emit('my other event', {message:`${message.value}`});
+      }
+
+      window.onkeydown = function(e){
+        if(e.code == 'Enter'){
+            clearUl ();
+            socket.emit('my other event', {message:`${message.value}`});
+        }
+      }
+  });
+
+  function clearUl () {
+      for(var i = 0 ; i < ul.getElementsByTagName('li').length; i ++){
+          ul.removeChild(ul.getElementsByTagName('li')[i]);
+      }
+  }
+  </script>
+</html>

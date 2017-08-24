@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<script type="text/javascript" src='flex-size.js'></script>
+	<title></title>
+</head>
+<body>
+	<div id="c1" style="width: 100%;height: 500px;"></div>
+</body>
+	<script src="https://cdn.bootcss.com/echarts/3.6.2/echarts.min.js"></script>
+	<script type="text/javascript">
+		var myChart = echarts.init(document.getElementById('c1'));
+		var option = {
+		    series: [
+		        {
+		        	selectedMode:true,
+		        	startAngle:120,
+		        	hoverAnimation:false,
+		        	selectedOffset:10,
+		            type:'pie',
+		            radius: ['30%', '70%'],
+		            avoidLabelOverlap: true,
+		            animationType:'expansion',
+		            label: {
+		                normal: {
+		                    show: false
+		                },
+		                emphasis: {
+		                    show: true,
+		                    textStyle: {
+		                        fontSize: '30',
+		                        fontWeight: 'bold'
+		                    },
+		                    formatter:function(params){
+		                    	return params.name + ':' + params.value.toFixed(2);
+		                    }
+		                }
+		            },
+		            labelLine: {
+		                normal: {
+		                	length:25,
+		                	length2:40,
+		                	smooth:0,
+		                    show: true
+		                }
+		            },
+		            data:[
+		                {value:12.1, name:'收入'},
+		                {value:32.1, name:'支出'},
+		            ]
+		        }
+		    ],
+		    color:['#0288d1','#00CE75']
+		};
+		myChart.setOption(option);
+		myChart.dispatchAction({ type: 'highlight',dataIndex:0});
+		myChart.on('click',  function(event) {
+			console.log(event.name);
+		});
+	</script>
+	<!-- <script type="text/javascript">
+		var sub = false;
+	    var boundIndex = 0;
+	    var listFontSize = subPx($('.billing-details').css('font-size')) / 75 * rem;
+	    var incomeFont = 28 / 75 * rem;
+	    var getdateArr;
+	    var radiusWidth = 166 / 75 * rem;
+	    if($('#income').val().length >=0 && $('#income').val().length <=3){
+	        var chartFont = listFontSize / 1.2;
+	    }else if($('#income').val().length <= 5 && $('#income').val().length >3){
+	        var chartFont = listFontSize / 1.5 ;
+	    }else if($('#income').val().length > 5){
+	        var chartFont = listFontSize / 1.9;
+	    }
+	
+	    var searchDate = $('.billing-details').attr('data-target');
+	    $(function(){
+	        var outcome = $('#outcome').val();
+	        var income = $('#income').val();
+	        if(outcome == 0 && income != 0){
+	            getdateArr = [
+	                {name : '收入',value : income,color:'#0288d1'}
+	            ];
+	        }else if(income == 0 && outcome != 0){
+	            getdateArr = [
+	                {name : '支出',value : outcome,color:'#00CE75'}
+	            ];
+	        }else{
+	            getdateArr = [
+	                {name : '收入',value : income,color:'#0288d1'},
+	                {name : '支出',value : outcome,color:'#00CE75'}
+	            ];
+	        }
+	        setList(1);
+	        toChart(getdateArr);
+	    });
+		function toChart(data){
+	        var chart = new iChart.Donut2D({
+	            render: 'chart-wrapper',
+	            width: $('#chart-wrapper').width(),
+	            height: $('#chart-wrapper').height(),
+	            data: data,
+	            shadow : true,
+	            shadow_blur : 6,
+	            shadow_color : '#aaaaaa',
+	            shadow_offsetx : 0,
+	            shadow_offsety : 0,
+	            background_color:'#fefefe',
+	            donutwidth:0.5,
+	            radius:radiusWidth,
+	            center : {
+	                text:  searchDate ,
+	                color:'#3e576f',
+	                shadow:true,
+	                shadow_blur : 2,
+	                shadow_color : '#557797',
+	                shadow_offsetx : 0,
+	                shadow_offsety : 0,
+	                fontsize : incomeFont
+	            },
+	            color_factor: 0.28,
+	            offset_angle: 120,//逆时针偏移120度
+	            decimalsnum: 2,
+	            sub_option: {
+	                border : {
+	                    width : 3,
+	                    color : '#ffffff'
+	                },
+	                label: {
+	                    background_color: '#fff',
+	                    sign: false,//设置禁用label的小图标
+	                    line_height: 10,
+	                    padding: 10,
+	                    border: {
+	                        enable: true,
+	                        radius: 4,//圆角设置
+	                        color: '#fff'
+	                    },
+	                    fontsize: chartFont,
+	                    fontweight: 900,
+	                    color: '#fff'
+	                },
+	                listeners: {
+	                    click: function (s) {
+	                        console.log(this.get('name'),this.get('value'),this.get('id'),this);
+	                        if(s.get('name') != data[1].name){
+	                            if(sub == true){
+	                                boundIndex = 0;
+	                                sub = false;
+	                                setList(1);
+	                                toChart(getdateArr);
+	                            }
+	                        }else{
+	                            if(sub == false){
+	                                boundIndex = 1;
+	                                sub = true;
+	                                setList(2);
+	                                toChart(getdateArr);
+	                            }
+	                        }
+	                    },
+	                    parseText: function (d) {
+	                        if (d.get('name') == data[boundIndex].name)this.options.label.border.color = this.options.label.color = this.options.background_color;
+	                        return d.get('name') + ' ' + d.get('value') + ' 元';
+	                    }
+	                }
+	            }
+	        });
+	        chart.draw();
+	    } -->
+	</script>
+</html>

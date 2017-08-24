@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head>
+	<title></title>
+</head>
+<body>
+	用户：<input type="text" id="user"><br>
+	密码：<input type="password" id="pass"><br>
+	<input type="button" name="" id="reg_btn" value="注册">
+	<input type="button" name="" id="login_btn" value="登陆">
+</body>
+<script type="text/javascript" src="jquery.1.9.1.min.js"></script>
+<script type="text/javascript">
+	var user = document.getElementById('user');
+	var pass = document.getElementById('pass');
+	var login = document.getElementById('login_btn');
+	var reg = document.getElementById('reg_btn');
+	
+	reg.onclick = function(){
+		$.ajax({
+			url: '/user',
+			type: 'get',
+			data: {act: 'reg',user:user.value,pass:pass.value},
+			success:function(str){
+				console.log(json)
+				var json = eval('(' + str + ')');
+					
+				if(json.ok){
+					alert('注册成功')
+				}else{
+					alert('注册失败' + json.msg);
+				}
+			},
+			error:function(err) {
+				console.log(err);
+			}
+		})
+		
+	}
+	login.onclick = function(){
+		$.ajax({
+			url: '/user',
+			type: 'get',
+			data: {act: 'login',user:user.value,pass:pass.value},
+			success:function(str){
+				console.log(json)
+				var json = eval('(' + str + ')');
+				
+				if(json.ok){
+					alert('登陆成功')
+				}else{
+					alert('登陆失败' + json.msg);
+				}
+			},
+			error:function(err) {
+				console.log(err);
+			}
+		})
+	}
+</script>
+</html>

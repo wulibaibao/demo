@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<script type="text/javascript" src="./lib/flex-size.js"></script>
+	<title>微信-支付宝支付</title>
+	<link rel="stylesheet" type="text/css" href="./lib/reset.css">
+	<style type="text/css">
+		html,
+		body{width: 100%;height: 100%;overflow: hidden;}
+		body{background-color: #e5e5e5;font-size: 0.48rem}
+
+		.form,
+		.pay-way{width: 100%;color: #333;padding: 0.24rem}
+
+		.form > div,
+		.pay-way > div{text-indent:0.2rem;width: 100%;height: 1rem;line-height: 1rem;display: flex;background-color: #fff;border-bottom: 2px solid #eaeaea;padding-bottom: 1px;}
+		.form > div p,
+		.pay-way > div p{width: 30%;height: 100%;line-height: 1rem;}
+		.form > div input{width: 70%;border:transparent;font-size: 0.32rem;color: #333;text-align: right;padding-right: 0.24rem;}
+		
+		.pay-way input{align-self: center;margin-left: 60%;width: 0.3rem;height:0.3rem;border-radius: 50%;}
+	</style>
+</head>
+<body>
+	<div class="form">
+		<div><p>卡号</p><input type="text" name="card-number" id="card-number"></div>
+		<div><p>姓名</p><input type="text" name="user-name" id="user-name"></div>
+		<div><p>电话</p><input type="tel" name="user-telphone" id="user-telphone"></div>
+		<div><p>充值金额(元)</p><input type="number" name="count" id="count"></div>
+	</div>
+	<div class="pay-way">
+		<div><p>微信支付</p><input type="radio" name="payment" id="weichat-pay"></div>
+		<div><p>支付宝支付</p><input type="radio" name="payment" id="payment-pay"></div>
+	</div>
+</body>
+<script type="text/javascript" src='./lib/jquery.min.js'></script>
+<script type="text/javascript">
+	const cardNum = document.querySelector('#card-number');
+	const userName = document.querySelector('#user-name');
+	const userTel = document.querySelector('#user-telphone');
+	const count = document.querySelector('#count');
+
+	window.onload = function(){
+		setPage();
+	}
+	function setPage(){
+		var cardStrCount = 0;
+		cardNum.addEventListener('keydown',function(){
+			var cardStr = cardNum.value.split('');
+			console.log(cardStr);
+			if(cardStr.lengt == 4 && cardStrCount == 0){
+				cardStr.splice(4,0,"-");
+				cardStrCount += 1;
+			}
+			if(cardStr.length == 8 && cardStrCount == 1){
+				cardStr.splice(8,0,"-");
+				cardStrCount ++;
+			}
+			var str = cardStr.join();
+			cardNum.value = str.replace(/,/g,'');
+		},true);
+	}
+</script>
+</html>

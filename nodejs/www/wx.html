@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>wx支付</title>
+</head>
+<body>
+	<p id="wx_payment">支付</p>
+</body>
+<script type="text/javascript">
+	window.onload = function(){
+		var options = {
+			prepay_id : 'wx20170414143151b72009734a0793261014',
+			package : '3507570211'
+		}
+		var payment = document.querySelector('#wx_payment');
+		var baseUrl = 'https://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb?'; 
+		var paymentUrl = baseUrl + 'prepay_id=' + options.prepay_id + '&package=' + options.package;
+		payment.onclick = function(){
+			window.location.href = paymentUrl;
+		}
+	}
+</script>
+</html>
