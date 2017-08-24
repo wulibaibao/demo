@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/calendar.css" />
+		<link rel="stylesheet" type="text/css" href="css/custom_2.css" />
+		<!--<script src="js/modernizr.custom.63321.js" type="text/javascript" charset="utf-8"></script>-->
+	</head>
+	<body>
+		<section class="main">
+			<div class="custom-calendar-wrap">
+				<div id="custom-inner" class="custom-inner">
+					<div class="custom-header clearfix">
+						<nav>
+							<span id="custom-prev" class="custom-prev"></span>
+							<span id="custom-next" class="custom-next"></span>
+						</nav>
+						<h2 id="custom-month" class="custom-month"></h2>
+						<h3 id="custom-year" class="custom-year"></h3>
+					</div>
+				</div>
+			</div>
+			<div id="calendar" class="fc-calendar-container"></div>
+		</section>
+		<div id="calendarTwo" class="fc-calendar-container"></div>
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script src="js/jqueryui.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="js/jquery.calendario.js"></script>
+		<script type="text/javascript">
+		var day = new Date();
+		console.log(day.getFullYear() + 1)
+		var options = {
+			month : day.getMonth() -1,
+			year : day.getFullYear(),
+			caldata : null,
+			weeks : [ '星期天', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六' ],
+			weekabbrs : [ '日', '一', '二', '三', '四', '五', '六' ],
+			months : [ '一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月','九月', '十月', '十一月', '十二月' ],
+			monthabbrs : [ '一', '二', '三', '四', '五', '六', '七', '八', '九', '十', '十一', '十二' ],
+			startIn : 0,
+			onDayClick : function( c, b, a ) { 
+				if(c.hasClass('fc-today')){
+					c.removeClass('fc-today');
+				}else{
+					c.attr('class','fc-today');
+				}
+			}
+			
+		}
+		var cal = $( '#calendar' ).calendario(options),
+		$month = $( '#custom-month' ).html( cal.getMonthName() ),
+		$year = $( '#custom-year' ).html( cal.getYear() );
+		
+		$( '#custom-next' ).on( 'click', function() {
+			cal.gotoNextMonth( updateMonthYear );
+		} );
+		$( '#custom-prev' ).on( 'click', function() {
+			cal.gotoPreviousMonth( updateMonthYear );
+		} );
+
+		var arr = [1,5,7,9];
+
+		console.log(cal.getMonth());
+		console.log(cal.getYear());
+		console.log($('#calender').find('.fc-body .fc-row').length);
+		console.log(document.getElementById('calendar').getElementsByClassName('fc-body')[0].getElementsByClassName('fc-row').length);
+		console.log($('#calender').find('.fc-calendar:eq(0)').find('.fc-body:eq(0)').find(' .fc-row').length);
+		console.log($('#calender .fc-body .fc-row').length);
+		console.log(document.getElementById('calendar').getElementsByClassName('fc-date').length)
+		console.log($('#calender>.fc-date').length)
+		for(var i = 0 ; i < $('.fc-body .fc-row').length; i ++ ){
+			$('.fc-body .fc-row').eq(i).find('span').each(function(j,e){
+				for(var n = 0 ; n < arr.length; n ++){
+					if($(this).eq(0).text()== arr[n]){
+						$(this).parent().attr('class','fc-today');
+					}
+				}
+			})
+		}
+		/*$('.fc-body .fc-row').each(function(i,ele){
+			$('.fc-body .fc-row').eq(i).find('div').each(function(j,e){
+				console.log(ele);
+			})
+			.each(function(j){
+				for(var k = 0 ; k < arr.length; k ++){
+					var n = arr[n];
+					if(j.find('span').text() == n){
+						$(this).arr('class','fc-today');
+					}
+				}
+				
+			})
+		})*/
+		function updateMonthYear() {				
+			$month.html( cal.getMonthName() );
+			$year.html( cal.getYear() );
+		}
+			/*var transEndEventNames = {
+						'WebkitTransition' : 'webkitTransitionEnd',
+						'MozTransition' : 'transitionend',
+						'OTransition' : 'oTransitionEnd',
+						'msTransition' : 'MSTransitionEnd',
+						'transition' : 'transitionend'
+					},
+					transEndEventName = transEndEventNames[ Modernizr.prefixed( 'transition' ) ],
+					$wrapper = $( '#custom-inner' ),
+					$calendar = $( '#calendar' ),
+					cal = $calendar.calendario( {
+						onDayClick : function( $el, $contentEl, dateProperties ) {
+
+							if( $contentEl.length > 0 ) {
+								showEvents( $contentEl, dateProperties );
+							}
+
+						},
+						caldata : codropsEvents,
+						displayWeekAbbr : true
+					} ),
+					$month = $( '#custom-month' ).html( cal.getMonthName() ),
+					$year = $( '#custom-year' ).html( cal.getYear() );
+
+				$( '#custom-next' ).on( 'click', function() {
+					cal.gotoNextMonth( updateMonthYear );
+				} );
+				$( '#custom-prev' ).on( 'click', function() {
+					cal.gotoPreviousMonth( updateMonthYear );
+				} );
+
+				function updateMonthYear() {				
+					$month.html( cal.getMonthName() );
+					$year.html( cal.getYear() );
+				}
+
+				// just an example..
+				function showEvents( $contentEl, dateProperties ) {
+
+					hideEvents();
+					
+					var $events = $( '<div id="custom-content-reveal" class="custom-content-reveal"><h4>Events for ' + dateProperties.monthname + ' ' + dateProperties.day + ', ' + dateProperties.year + '</h4></div>' ),
+						$close = $( '<span class="custom-content-close"></span>' ).on( 'click', hideEvents );
+
+					$events.append( $contentEl.html() , $close ).insertAfter( $wrapper );
+					
+					setTimeout( function() {
+						$events.css( 'top', '0%' );
+					}, 25 );
+
+				}
+				function hideEvents() {
+
+					var $events = $( '#custom-content-reveal' );
+					if( $events.length > 0 ) {
+						
+						$events.css( 'top', '100%' );
+						Modernizr.csstransitions ? $events.on( transEndEventName, function() { $( this ).remove(); } ) : $events.remove();
+
+					}
+
+				}*/
+		</script>
+		
+	</body>
+	
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="time"></div>
+</body>
+<script type="text/javascript">
+	var data = new Date();
+	var yy = data.getFullYear();
+	var mm = data.getMonth() +1;
+	var dd = data.getDate();
+	console.log(yy,mm,dd);
+	console.log(lastSevenDay(yy,mm,dd));
+	function lastSevenDay(y,m,d){
+		var today;
+		var data = new Date();
+		if(y && m && d){
+			if(d - 6 >0){
+				return today = y + '-' + m + '-' + (d -6);
+			}
+
+			switch (d -6) {
+				case 0:
+				// statements_1
+				break;
+				case -1:
+				// statements_1
+				break;
+				case -2:
+				// statements_1
+				break;
+				case -3:
+				// statements_1
+				break;
+				case -5:
+				// statements_1
+				break;
+				case -6:
+				// statements_1
+				break;
+			}
+		}
+	}
+</script>
+</html>

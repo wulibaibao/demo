@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="c3-b03125fa.css"/>
+	</head>
+	<body>
+		<div id="cancelClass"></div>
+	</body>
+	<script type="text/javascript" src="jquery-2.1.1.min.js"></script>
+	<script src="d3-3.5.6.min-77adef17.js" type="text/javascript" charset="utf-8"></script>
+	<script src="c3.min-4c5bef8f.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var chart = c3.generate({
+			bindto:'#cancelClass',
+						data: {
+						    x: 'x',
+						    columns: [
+						        ['x', 30, 50, 100, 230, 300, 310],
+						        ['闪报路况', 30, 200, 100, 400, 150, 250],
+						        ['现在白交', 130, 300, 200, 300, 250, 450],
+						        ['你在我啊哈', 80, 150, 100, 180, 80, 150]
+						        ]
+						    }
+					});
+	</script>
+</html>

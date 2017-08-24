@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../dist/dropload.css"/>
+	</head>
+	<body>
+		<div class="content">
+			<div class="lists"></div>
+		</div>
+	</body>
+	<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../dist/dropload.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var counter = 0;
+		// 每页展示4个
+		var num = 4;
+		var pageStart = 0,pageEnd = 0;
+		
+		var dropload = $('.content').dropload({
+			scrollArea:window,
+			loadDownFn :function(me){
+				$.ajax({
+                    type: 'GET',
+                    url: 'json/more.json',
+                    dataType: 'json',
+                    success: function(data){
+                    	var result = '';
+                        counter++;
+                        pageEnd = num * counter;
+                        pageStart = pageEnd - num;
+                        
+                        if(pageStart <= data.lists.length){
+                            for(var i = pageStart; i < pageEnd; i++){
+                                result +=   '<a class="item opacity" href="'+data.lists[i].link+'">'
+                                                +'<img src="'+data.lists[i].pic+'" alt="">'
+                                                +'<h3>'+data.lists[i].title+'</h3>'
+                                                +'<span class="date">'+data.lists[i].date+'</span>'
+                                            +'</a>';
+                                if((i + 1) >= data.lists.length){
+                                    // 数据加载完
+                                    tab1LoadEnd = true;
+                                    // 锁定
+                                    me.lock();
+                                    // 无数据
+                                    me.noData();
+                                    break;
+                                }
+                            }
+                            // 为了测试，延迟1秒加载
+                            setTimeout(function(){
+                                $('.lists').append(result);
+                                // 每次数据加载完，必须重置
+                                me.resetload();
+                            },1000);
+                        }
+                    }
+                    	
+			});
+			}
+		})
+	</script>
+</html>

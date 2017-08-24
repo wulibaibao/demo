@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div class="canvasDiv" id="canvasDiv"></div>
+		<div id="canvas"></div>
+	</body>
+	<script src="ichart.1.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+				var data1 = [
+				        	{name : 'Renren',value : 3344.1,color:'#b5bcc5'},
+				        	{name : 'Facebook',value : 196.14,color:'#b5bcc5'},
+				        	{name : 'StumbleUpon',value : 1311.97,color:'#b5bcc5'},
+				        	{name : 'reddit',value : 700.44151,color:'#b5bcc5'},
+				        	{name : 'Hi5',value : 511.2231,color:'#b5bcc5'},
+				        	{name : 'LinkedIn',value : 4115.85,color:'#b5bcc5'},
+				        	{name : 'Twitter',value : 40.59,color:'#b5bcc5'},
+				        	{name : 'Other',value : 11.68,color:'#b5bcc5'}
+			        	];
+	        	
+				new iChart.Bar2D({
+					render : 'canvasDiv',
+					data: data1,
+					width : 800,
+					height : 400,
+					offsetx:20,
+					coordinate:{
+						width:620,
+						height:240,
+						grid_color:'#4e5464',
+						axis:{
+							color:'#4e5464',
+							width:[0,0,8,1]
+						},
+						scale:[{
+							 position:'bottom',	
+							 start_scale:0,
+
+							 label:{color:'#ffffff'},
+							 listeners:{
+								parseText:function(t,x,y){
+									return {text:t}
+								}
+							 }
+						}]
+					},
+					label:{color:'#dcdcdc'},
+					background_color : '#3c4251',
+					sub_option:{
+						listeners:{
+							parseText:function(r,t){
+								return t;
+							}
+						}
+					},
+					legend:{enable:true}
+				}).draw();
+			
+			
+			//定义数据
+		var data = [
+			{name : 'H',value : 700,color:'#a5c2d5'},
+		   	{name : 'E',value : 500,color:'#cbab4f'},
+		   	{name : 'L',value : 1200,color:'#76a871'},
+		   	{name : 'L',value : 1200,color:'#76a871'},
+		   	{name : 'O',value : 1500,color:'#a56f8f'},
+		   	{name : 'W',value : 1300,color:'#c12c44'},
+		   	{name : 'O',value : 1500,color:'#a56f8f'},
+		   	{name : 'R',value : 180,color:'#9f7961'},
+		   	{name : 'L',value : 12,color:'#76a871'},
+		   	{name : 'D',value : 40,color:'#6f83a5'}
+		 ];
+		 var chart1 = new iChart.Column2D({
+				render : 'canvas',//渲染的Dom目标,canvasDiv为Dom的ID
+				data: data,//绑定数据
+				width : 800,//设置宽度，默认单位为px
+				height : 400,//设置高度，默认单位为px
+
+				coordinate:{//配置自定义坐标轴
+					scale:[{//配置自定义值轴
+						 position:'left',//配置左值轴	
+						 start_scale:0,//设置开始刻度为0
+						 
+						 listeners:{//配置事件
+							parseText:function(t,x,y){//设置解析值轴文本
+								return {text:t}
+							}
+						}
+					}]
+				}
+			});
+			//调用绘图方法开始绘图
+			chart1.draw();
+		
+	</script>
+</html>

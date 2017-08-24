@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="data"></div>
+	</body>
+	<script type="text/javascript">
+		var star = new Date();
+		
+		var yy = star.getFullYear();
+		var mm = star.getMonth();
+		var dd = star.getDate();
+		function printTime(y,m,d){
+			m<10?m='0'+m:m=m;
+			d<10?d='0'+d:d=d;
+			var fullDate = y + '.' + m + '.' + d
+		}
+		printTime(yy,mm,dd);
+		console.log(yy + '.' + mm + '.' + dd);
+	</script>
+</html>

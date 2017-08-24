@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="1.在控制中心创建应用\n2.在IDE中修改包名，AppKey，生成APK文件\n3.在控制中心中修改Android配置，上传APK文件"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/skipWx"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="一键跳转"/>
+
+            <Button
+                android:id="@+id/scene"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="个性化安装"/>
+
+            <Button
+                android:id="@+id/channel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="渠道统计"/>
+        </LinearLayout>
+
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32px"
+            android:gravity="center"
+            android:text="======= OpenInstall ======="
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/market_result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8px"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/install_result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8px"
+            android:textSize="16sp"/>
+        <TextView
+            android:id="@+id/wakeup_result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8px"
+            android:textSize="16sp"/>
+
+    </LinearLayout>
+</LinearLayout>

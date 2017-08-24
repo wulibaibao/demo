@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title></title>
+		<meta charset="utf-8">
+		<script type="text/javascript" src="jquery-1.5.2.min.js"></script>
+		<script type="text/javascript" src="baiduTemplate.js"></script>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			
+			#wrapper {
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+				font-size: 0.16rem;
+			}
+			
+			div {
+				font-size: 0.16rem;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div>wo zai zheli aaaaaa</div>
+		<div id="wrapper"></div>
+		<div class="box"></div>
+		<div>wo zai zhe li</div>
+		<div></div>
+		<script id="t" type="text/html">
+			<h2><%=title%></h2>
+			<ul>
+				<%for(var i=0;i<list.length;i++){%>
+				<li><span style="color:red">z我我我</span><b><%:h=list[i];%></b><i>生生世世</i></li>
+				<%}%>
+			</ul>
+		</script>
+		<script type="text/html" id="b">
+			<ul>
+				<%for(var i=0;i<data.length;i++){%>
+					<li>
+						<%:h=data[i].name;%>
+					</li>
+				<%}%>
+			</ul>
+		</script>
+		<script type="text/html" id="swiper-template">
+			<%for(var i=0;i<data.length ;i++){%>
+				<div class="swiper-slide">
+					<div class="swiper-slide-img"><img class="imgorigin" originalSrc="<%:h=data[i].name;%>"/></div>
+					<div class="swiper-slide-main">
+						<h3><%:h=data[i].name;%></h3><div><span class="userCarYears">车龄 + <%:h=data[i].name;%>+年 · </span><span class="carDriverLength"><%:h=data[i].name;%> + 公里</span> </div>
+					</div>
+				</div>
+			<%}%>
+		</script>
+		<script type="text/javascript">
+			document.documentElement.style.fontSize = innerWidth / 3.75 + 'px';
+			console.log(document.documentElement.style.fontSize);
+			window.onresize = function() {
+				document.documentElement.style.fontSize = innerWidth / 3.75 + 'px';
+				console.log(document.documentElement.style.fontSize);
+			}
+			var data = {
+				title: '欢迎使用baiduTemplate',
+				list: [
+					'test1:默认支持HTML转义，如输出<script>，也可以关掉，语法<:=value> 详见API',
+					'test2:1111',
+					'test3:222222222',
+					'test4:list[5]未定义，模板系统会输出空'
+				]
+			};
+			console.log(data);
+			document.getElementById('wrapper').innerHTML = baidu.template('t', data);
+
+			$.ajax({
+				url: 'result.json',
+				type: 'get',
+				async: true,
+				success: function(a) {
+					console.log(a);
+					document.getElementsByClassName('box')[0].innerHTML = baidu.template('swiper-template', a);
+				},
+				error: function(e) {
+					console.log(e)
+				}
+			})
+		</script>
+		<script type="text/javascript">
+			const getSecret = (secret) => {
+				return {
+					get: () => secret
+				};
+			};
+
+			test('Closure for object privacy.', assert => {
+				const msg = '.get() should have access to the closure.';
+				const expected = 1;
+				const obj = getSecret(1);
+
+				const actual = obj.get();
+
+				try {
+					assert.ok(secret, 'This throws an error.');
+				} catch(e) {
+					assert.ok(true, 'The secret var is only availableto privileged methods.');
+				}
+
+				assert.equal(actual, expected, msg);
+				assert.end();
+			});
+		</script>
+		<!-- <script type="text/javascript"> 
+		var is_android = navigator.userAgent.toLowerCase().indexOf('android') != -1; 
+		console.log(is_android);
+		var is_ios = navigator.userAgent.toLowerCase().indexOf('iphone') != -1 
+		console.log(is_ios);
+		var is_weixin = navigator.userAgent.toLowerCase().indexOf('micromessenger') != -1; 
+		console.log(is_weixin)
+		var _ww = (window.screen.availWidth * (window.devicePixelRatio || 1.5) / 1); 
+		console.log(_ww);
+		console.log(document.documentElement.style.fontSize);
+		if (is_android && _ww < 720) { 
+			document.writeln('<meta name="viewport" content="width=750px,target-densitydpi=device-dpi,user-scalable=yes,initial-scale=0.5,maximum-scale=1.0" />'); 
+		}else{ 
+			document.writeln('<meta name="viewport" content="width=750px,target-densitydpi=device-dpi,user-scalable=no,maximum-scale=1.0" />'); 
+		} 
+	</script> -->
+
+	</body>
+
+</html>

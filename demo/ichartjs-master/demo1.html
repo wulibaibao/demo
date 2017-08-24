@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="canvasDiv"></div>
+	</body>
+	<script src="jquery-1.11.0.min-910066fb.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="ichart.1.2.1.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			
+            $.ajax({
+                url: "http://lolapi.games-cube.com/champion",
+                type: "GET",
+                headers: {
+                    "DAIWAN-API-TOKEN": "6608E-00984-52020-46880"
+                },
+                success: function (result) {
+                	console.log(result);
+                    console.log(JSON.stringify(result));
+                }
+            });
+			var data = [
+						{
+							name : '上报',
+							value:[275,292,431,495,456,432,432,297],
+							color:'#ECAD55'
+						},
+			         	{
+			         		name : '截取',
+			         		value:[354,,,605,,487,448,322],
+			         		color:'#47AAB3'
+			         	},
+			         	{
+			         		name : '啊调查',
+			         		value:[354,,,605,554,,448,322],
+			         		color:'#663399'
+			         	}
+			         ];
+			         var lable = ["2005","2006","2007","2008","2009","2010","2011","2012"]
+	        var dataValue = [];
+			var chart = new iChart.BarStacked2D({
+					render : 'canvasDiv',
+					data: data,
+					labels:lable,
+					padding:10,
+					width : 800,
+					height : 400,
+					bar_height:20,	
+					background_color : '#ffffff',
+					shadow : true,
+					shadow_blur : 2,
+					shadow_color : '#333333',
+					shadow_offsetx : 1,
+					shadow_offsety : 1, 
+					sub_option:{
+						label:{color:'#f9f9f9',fontsize:12,fontweight:600},
+						border : {
+							width : 2,
+							color : '#ffffff'
+						},
+						listeners:{
+							parseText:function(r,t){
+								console.log(r.options.value_);
+								return r.options.name;
+							},
+							click:function(r,e,m){
+								/**
+								 * r:iChart.Rectangle2D对象
+								 * e:eventObject对象
+								 * m:额外参数
+								 */
+								console.log(r.get('name'));
+								console.log(r.get('tip'));
+								console.log(r.get('text'));
+								console.log(e);
+								console.log(m);
+							}
+						}
+						
+					},
+					label:{color:'#333333',fontsize:12,fontweight:600},
+					showpercent:true,
+					decimalsnum:0,
+					tip:{
+						enable:true,
+						listeners:{
+						 //tip:提示框对象、name:数据名称、value:数据值、text:当前文本、i:数据点的索引
+							parseText:function(tip,name,value,text,i){
+								//console.log(tip)
+								var num = {};
+								num.x = tip.T.x;
+								num.y = tip.T.y;
+								num.value = value;
+								num.i = i;
+								num.name = name;
+								num.width = tip.T.width;
+								dataValue.push(num);
+							return name +'：'+ value + ' 条；占比：'+ text.substring(text.length-3,text.length); 
+							}
+						}
+					},
+					coordinate:{
+						scale:[{
+							 position:'bottom',	
+							 label:{color:'#333333',fontsize:11,fontweight:600}
+						}],
+						width:600,
+						height:350
+					}
+			});
+			var clickX = 0,clickY = 0,dataVal = 0;
+			var arr = [];
+			console.log(dataValue);
+			for(var j = 0 ; j < lable.length; j ++){
+				var res = {};
+				for(var k = 0 ; k < data.length; k ++){
+					for(var b = 0 ; b < dataValue.length; b ++){
+						var index = j + '_' + k;
+						if(dataValue[b].i == index){
+							//console.log(dataValue[b].i);
+							clickX = dataValue[b].x;
+							clickY = dataValue[b].y;
+							dataVal += dataValue[b].value;
+						}
+						var indexFinal = j + '_' + (data.length - 1);
+						if(dataValue[b].i == indexFinal){
+							var finalWidth = dataValue[b].width;
+						}
+					}
+				}
+				res.x = clickX + finalWidth + 15;
+				res.y = clickY + 15;
+				res.val = dataVal;
+				clickX = 0;
+				clickY = 0;
+				dataVal = 0;
+				arr.push(res);
+			}
+			console.log(arr);
+			chart.plugin(new iChart.Custom({
+					drawFn:function(tip){
+						//console.log(dataValue);
+						for(var a = 0 ; a < arr.length ; a ++){
+							var obj = arr[a];
+							chart.target.textBaseline('r')
+								.textFont('11px Verdana')
+								.fillText(obj.val,obj.x,obj.y,false,'#000');
+						}
+					}
+			}));
+			
+			chart.draw();
+		});
+		
+		console.log(37+null);
+		
+	</script>
+	<!--<script>
+	var c = 1;
+		var value=0,wid=0,hei=0;
+		for(var i = 0 ; i < dataValue.length; i ++){
+			value += dataValue[i].value;
+			if(c!=1 &&c % 3 == 0){
+				if(dataValue[i].x){
+					wid = dataValue[i].x+dataValue[i].width+5;
+				}else if(dataValue[i-1].x){
+					wid = dataValue[i-1].x+dataValue[i-1].width+5;
+				}else{
+					wid = dataValue[i-2].x+dataValue[i-2].width+5;
+				}
+				hei = dataValue[i].y+ 15;
+				
+				//console.log(wid);
+				//console.log(hei);
+				
+				
+				value = 0;
+				wid = 0;
+				hei = 0;
+			}
+			c++;
+		}
+	</script>-->
+	<script type="text/javascript">
+		function getTaskTime(strDate) {   
+		    if(null==strDate || ""==strDate){  
+		        return "";  
+		    }  
+		    var dateStr=strDate.trim().split(" ");  
+		    var strGMT = dateStr[0]+" "+dateStr[1]+" "+dateStr[2]+" "+dateStr[5]+" "+dateStr[3]+" GMT+0800";  
+		    var date = new Date(Date.parse(strGMT));  
+		    var y = date.getFullYear();  
+		    var m = date.getMonth() + 1;    
+		    m = m < 10 ? ('0' + m) : m;  
+		    var d = date.getDate();    
+		    d = d < 10 ? ('0' + d) : d;  
+		    var h = date.getHours();  
+		    var minute = date.getMinutes();    
+		    minute = minute < 10 ? ('0' + minute) : minute;  
+		    var second = date.getSeconds();  
+		    second = second < 10 ? ('0' + second) : second;  
+		      
+		    return y+"-"+m+"-"+d+" "+h+":"+minute+":"+second;  
+		};  
+ 
+console.log(getTaskTime('Fri Jun 02 14:58:15 CST 2017'));
+	</script>
+</html>

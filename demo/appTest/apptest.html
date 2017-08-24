@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script type="text/javascript" src="jquery.js"></script>
+	</head>
+
+	<body>
+		<a id="ios">iphoneDownUrl</a>
+		<a id="android">androidDownUrl</a>
+		<a id="openApp">贴吧客户端</a>
+	</body>
+	<script type="text/javascript">
+	var timestamp = (new Date()).valueOf();
+	console.log(timestamp);
+	var url = "/verifycode/generate/";
+	 url = url + "?timestamp=" + timestamp;
+	 console.log(url);
+		var APPCommon = {
+			iphoneSchema: 'openApp.jdMobile://virtual?params={"category":"jump","des":"Discovery","sourceType":"JSHOP_SOURCE_TYPE","sourceValue":"JSHOP_SOURCE_VALUE","SE":"null","M_sourceFrom":"h5","kepler_param":{"source":"m-base","otherData":{},"channel":"m-arouse"},"m_param":{"m_source":"0","event_series":{},"jda":"122270672.1617839994.1484044809.1486102937.1486111312434.12","usc":"shenma-pinzhuan","ucp":"t_288551095_shenmapinzhuan","umd":"cpc","utr":"-","jdv":"122270672%257Cshenma-pinzhuan%257Ct_288551095_shenmapinzhuan%257Ccpc%257C-%257C1486101783487","ref":"https%3A%2F%2Fh5.m.jd.com%2Factive%2Ffaxian%2Flist%2Farticle-list.html","psn":"1617839994|12","psq":1,"unpl":"","mba_muid":"1617839994","mba_sid":"14861113124359774070142136688","mt_xid":"","mt_subsite":""},"SE":{"mt_subsite":"","__jdv":"122270672%257Cshenma-pinzhuan%257Ct_288551095_shenmapinzhuan%257Ccpc%257C-%257C1486101783487","unpl":"","__jda":"122270672.1617839994.1484044809.1486102937.1486111312434.12"}}',
+			iphoneDownUrl: 'https://itunes.apple.com/cn/app/xing-botv-mei-nu-shuai-ge3d/id1098066581?l=en&mt=8',
+			androidSchema: 'intent://m.jd.com/#Intent;scheme=openApp.jdMobile://virtual?params={"category":"jump","des":"Discovery","sourceType":"JSHOP_SOURCE_TYPE","sourceValue":"JSHOP_SOURCE_VALUE","SE":"null","M_sourceFrom":"h5","kepler_param":{"source":"m-base","otherData":{},"channel":"m-arouse"},"m_param":{"m_source":"0","event_series":{},"jda":"122270672.1617839994.1484044809.1486102937.1486111312434.12","usc":"shenma-pinzhuan","ucp":"t_288551095_shenmapinzhuan","umd":"cpc","utr":"-","jdv":"122270672%257Cshenma-pinzhuan%257Ct_288551095_shenmapinzhuan%257Ccpc%257C-%257C1486101783487","ref":"https%3A%2F%2Fh5.m.jd.com%2Factive%2Ffaxian%2Flist%2Farticle-list.html","psn":"1617839994|12","psq":2,"unpl":"","mba_muid":"1617839994","mba_sid":"14861113124359774070142136688","mt_xid":"","mt_subsite":""},"SE":{"mt_subsite":"","__jdv":"122270672%257Cshenma-pinzhuan%257Ct_288551095_shenmapinzhuan%257Ccpc%257C-%257C1486101783487","unpl":"","__jda":"122270672.1617839994.1484044809.1486102937.1486111312434.12"}};package=com.jingdong.app.mall;end',
+			androidDownUrl: 'http://webrs.xingbo.tv/app/XingboLive-release.apk',
+
+			openApp: function() {
+				var this_ = this;
+				if(navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {
+					var loadDateTime = new Date();
+
+					window.setTimeout(function() {
+						var timeOutDateTime = new Date();
+
+						if(timeOutDateTime - loadDateTime < 5000) {
+							window.location = this_.iphoneDownUrl; //ios下载地址
+						} else {
+							window.close();
+						}
+					}, 25);
+
+					window.location = this.iphoneSchema;
+				} else if(navigator.userAgent.match(/android/i)) {
+					try {
+						window.location = this_.androidSchema;
+
+						setTimeout(function() {
+							window.location = this_.androidDownUrl; //android下载地址
+						}, 500);
+					} catch(e) {}
+				}
+			},
+
+			isWeixin: function() { //判断是否是微信
+				var ua = navigator.userAgent.toLowerCase();
+
+				if(ua.match(/MicroMessenger/i) == "micromessenger") {
+					return true;
+				} else {
+					return false;
+				}
+			}
+		};
+		
+		$('#ios').on('touchstart',function(){
+			window.location = APPCommon.iphoneSchema;
+			window.location = APPCommon.iphoneDownUrl; //ios下载地址
+		});
+		$('#android').on('touchstart',function(){
+			window.location = APPCommon.androidSchema;
+			window.location = APPCommon.androidDownUrl; //android下载地址
+		})
+		$('#openApp').on('touchstart',function(){
+			var iframe = $('<iframe src="openApp.jdMobile://virtual" style="width:0;height:0;display: none;"></iframe>');
+			$('body').append(iframe);
+		})
+	</script>
+
+</html>

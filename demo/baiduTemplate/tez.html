@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <!-- Viewport metatags -->
+    <meta name="HandheldFriendly" content="true">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">      
+    <!-- iOS webapp metatags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<title></title>
+</head>
+<body>
+	<a href="" id="openApp">APP</a>
+	<p class="ecezApp">打开app</p>
+	<input type="tel" name="" id="" value="" />
+	<script src="jquery-1.5.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+
+	var browser = {
+		versions: function() {
+			var u = navigator.userAgent,
+				app = navigator.appVersion;
+				return {//移动终端浏览器版本信息
+                trident: u.indexOf('Trident') > -1, //IE内核
+                presto: u.indexOf('Presto') > -1, //opera内核
+                webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+                gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+                mobile: !!u.match(/AppleWebKit.*Mobile/i) || !!u.match(/MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/), //是否为移动终端
+                ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+                iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者QQHD浏览器
+                iPad: u.indexOf('iPad') > -1, //是否iPad
+                webApp: u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部
+            };
+        }(),
+        language: (navigator.browserLanguage || navigator.language).toLowerCase(),
+        is_weixin : function(){
+            var ua = navigator.userAgent.toLowerCase();
+            if(ua.match(/MicroMessenger/i) == "micromessenger") {
+                return true;
+            } else {
+                return false;
+            }
+        },
+        is_Android : function(){
+            return browser.versions.android;
+        },
+        is_ios : function(){
+            return browser.versions.ios || browser.versions.iPhone || browser.versions.iPad;
+        }
+    };
+    
+    if(browser.is_Android()){
+    	
+    	var ifrSrc = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.iecez.ecez' ;
+    	var ifr = document.createElement('iframe');
+    	
+    	ifr.src = ifrSrc;
+		ifr.style.display = 'none';
+		
+		ifr.onload = function() {
+			
+			console.log('is install')		
+			$('#openApp').attr('href',ifrSrc);
+			alert('Is installed.');
+		};
+		
+		ifr.onerror = function() {
+			console.log('no install');
+			$('#openApp').attr('href','http://a.app.qq.com/o/simple.jsp?pkgname=com.iecez.ecez');
+			alert('May be not installed.');
+		}
+		document.body.appendChild(ifr);
+		setTimeout(function() {
+			console.log(ifr.onreadystatechange);
+			document.body.removeChild(ifr);
+		}, 2000);
+    	
+    	/*alert(browser.versions.mobile);
+    	alert(browser.versions.android);
+    	alert(browser.is_Android());*/
+    	//alert('安卓');
+    	
+    	
+    	
+    }else if(browser.is_ios()){
+    	if(browser.is_weixin()){
+    		$('#openApp').attr('href','http://a.app.qq.com/o/simple.jsp?pkgname=com.iecez.ecez');
+    	}else{
+    		$('#openApp').attr('href','https://itunes.apple.com/us/app/e-chee-zhan/id1070889032?l=zh&ls=1&mt=8');
+    		alert('ios');
+    	}
+    	
+    	
+    	/*alert(browser.versions.ios);
+    	alert(browser.versions.iPhone);
+    	alert(browser.versions.iPad);
+    	alert(browser.is_ios())*/
+    	
+    	
+    }
+    
+    /*	var telVerification = /^1[34578]\d{9}$/;
+	document.getElementsByTagName('input')[0].onblur = function(){
+		var val = document.getElementsByTagName('input')[0].value;
+		
+		console.log(val);
+		console.log(telVerification.test(val));
+	}*/
+    /*	var a = "?token=453eee87-494e-4bc0-9bbd-385b45988215&currency=10";
+	
+	console.log(a.split('&'));
+	var b = a.split('&');
+	var _token = b[0];
+	var _currency = b[1];
+	console.log(_token);
+	console.log(_token.length);
+	console.log(_token.substring(7, _token.length));
+	console.log(_currency.substring(9, _currency.length));*/
+		/*if(navigator.userAgent.match(/android/i)) {
+		// 通过iframe的方式试图打开APP，如果能正常打开，会直接切换到APP，并自动阻止a标签的默认行为
+		// 否则打开a标签的href链接
+		var isInstalled;
+		//下面是安卓端APP接口调用的地址，自己根据情况去修改
+		var ifrSrc = 'cartooncomicsshowtwo://platformapi/startApp? type=0&id=${com.iecez.ecez}&phone_num=${com.1105141192}';
+		var ifr = document.createElement('iframe');
+		ifr.src = ifrSrc;
+		ifr.style.display = 'none';
+		ifr.onload = function() {
+			// alert('Is installed.');
+			isInstalled = true;
+			alert(isInstalled);
+			document.getElementById('openApp0').click();
+		};
+		ifr.onerror = function() {
+			// alert('May be not installed.');
+			isInstalled = false;
+			alert(isInstalled);
+		}
+		document.body.appendChild(ifr);
+		setTimeout(function() {
+			document.body.removeChild(ifr);
+		}, 1000);
+	}
+//ios判断
+	if(navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)){
+		if(navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {
+			//Animation://com.yz.animation
+			var isInstalled;
+			//var gz = '{"comName":"${com.short_name}","comID":"${com.id}","comPhoneNum":"${com.phone_num}","type":"0"}';
+			//var jsongz =JSON.parse(gz);
+			//下面是IOS调用的地址，自己根据情况去修改
+			var ifrSrc = 'Animation://?comName=${com.short_name}&comID=${com.iecez.ecez}&comPhoneNum=${com.1105141192}&type=0';
+			var ifr = document.createElement('iframe');
+			ifr.src = ifrSrc;
+			ifr.style.display = 'none';
+			ifr.onload = function() {
+				// alert('Is installed.');
+				isInstalled = true;
+				alert(isInstalled);
+				document.getElementById('openApp1').click();
+			};
+			ifr.onerror = function() {
+				// alert('May be not installed.');
+				isInstalled = false;
+				alert(isInstalled);
+			}
+			document.body.appendChild(ifr);
+			setTimeout(function() {
+				document.body.removeChild(ifr);
+			}, 1000);
+		}
+	}
+	var loadDateTime = new Date();
+	window.setTimeout(function() {
+      	var timeOutDateTime = new Date();
+      	if (timeOutDateTime - loadDateTime < 5000) {
+        	window.location = "https://itunes.apple.com/us/app/e-chee-zhan/id1070889032?l=zh&ls=1&mt=8";
+      	} else {
+        	window.close();
+      	}
+    },25);*/
+</script>
+</body>
+</html>

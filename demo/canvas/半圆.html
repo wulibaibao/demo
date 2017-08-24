@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../h5bp-html5-boilerplate-3cd1967/css/normalize.css"/>
+		<style type="text/css">
+			#circular{border: 1px solid black;}
+		</style>
+	</head>
+	<body>
+		<canvas id="circular" width="300" height="300">浏览器不支持，请升级浏览器</canvas>
+	</body>
+	<script type="text/javascript" src="../h5bp-html5-boilerplate-3cd1967/js/vendor/jquery-1.9.0.min.js"></script>
+	<script type="text/javascript">
+		var canvas = document.getElementById('circular');
+		var ctx = canvas.getContext('2d');
+		ctx.beginPath();
+		ctx.lineWidth = 5;
+		ctx.strokeStyle = "#dddddd";
+		
+		var circle = {
+			x : 100,    //圆心的x轴坐标值
+	        y : 100,    //圆心的y轴坐标值
+	        r : 70      //圆的半径
+		}
+		//以canvas中的坐标点(100,100)为圆心，绘制一个半径为50px的圆形
+		ctx.arc(circle.x, circle.y, circle.r, Math.PI, Math.PI * 2, false);
+		ctx.stroke();
+		
+		ctx.beginPath();
+		ctx.lineWidth = 5;
+		ctx.strokeStyle = "#DEBB47";
+		ctx.arc(circle.x, circle.y, circle.r, Math.PI, Math.PI * 1.5, false);
+		ctx.stroke();
+	</script>
+</html>
