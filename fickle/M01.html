@@ -1,0 +1,976 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn" http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- Viewport metatags -->
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <!-- iOS webapp metatags -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <!-- iOS webapp icons -->
+    <link rel="apple-touch-icon-precomposed" href="assets/images/ios/fickle-logo-72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/images/ios/fickle-logo-72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/images/ios/fickle-logo-114.png" />
+    <!-- TODO: Add a favicon -->
+    <link rel="shortcut icon" href="assets/images/ico/fab.ico">
+    <title>云会员</title>
+    <!--Page loading plugin Start -->
+    <link rel="stylesheet" href="assets/css/plugins/pace.css">
+    <script src="assets/js/pace.min.js"></script>
+    <!--Page loading plugin End   -->
+    <!-- Plugin Css Put Here -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/plugins/fileinput.min.css">
+    <!-- Plugin Css End -->
+    <!-- Custom styles Style -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <!-- Custom styles Style End-->
+    <!-- Responsive Style For-->
+    <link href="assets/css/responsive.css" rel="stylesheet">
+    <!-- Responsive Style For-->
+    <!-- Custom styles for this template -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="">
+    <!--Navigation Top Bar Start-->
+    <nav class="navigation">
+        <div class="container-fluid">
+            <!--Logo text start-->
+            <div class="header-logo">
+                <a href="index.html" title="">
+                    <h1>Fickle</h1>
+                </a>
+            </div>
+            <!--Logo text End-->
+            <div class="top-navigation">
+                <!--Collapse navigation menu icon start -->
+                <div class="menu-control hidden-xs">
+                    <a href="javascript:void(0)">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                </div>
+                <div class="search-box">
+                    <ul>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
+                                <span class="fa fa-search"></span>
+                            </a>
+                            <div class="dropdown-menu  top-dropDown-1">
+                                <h4>Search</h4>
+                                <form>
+                                    <input type="search" placeholder="what you want to see ?">
+                                </form>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!--Collapse navigation menu icon end -->
+                <!--Top Navigation Start-->
+                <ul>
+                    <li class="dropdown">
+                        <!--All task drop down start-->
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
+                            <span class="fa fa-tasks"></span>
+                            <span class="badge badge-lightBlue">3</span>
+                        </a>
+                        <div class="dropdown-menu right top-dropDown-1">
+                            <h4>All Task</h4>
+                            <ul class="goal-item">
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <div class="goal-user-image">
+                                            <img class="rounded" src="assets/images/demo/avatar-80.png" alt="user image" />
+                                        </div>
+                                        <div class="goal-content">
+                                            Wordpress Theme
+                                            <div class="progress progress-striped active">
+                                                <div class="progress-bar ls-light-blue-progress six-sec-ease-in-out" aria-valuetransitiongoal="100"></div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <div class="goal-user-image">
+                                            <img class="rounded" src="assets/images/demo/avatar-80.png" alt="user image" />
+                                        </div>
+                                        <div class="goal-content">
+                                            PSD Designe
+                                            <div class="progress progress-striped active">
+                                                <div class="progress-bar ls-red-progress six-sec-ease-in-out" aria-valuetransitiongoal="40"></div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <div class="goal-user-image">
+                                            <img class="rounded" src="assets/images/demo/avatar-80.png" alt="user image" />
+                                        </div>
+                                        <div class="goal-content">
+                                            Wordpress PLugin
+                                            <div class="progress progress-striped active">
+                                                <div class="progress-bar ls-light-green-progress six-sec-ease-in-out" aria-valuetransitiongoal="60"></div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="only-link">
+                                    <a href="javascript:void(0)">View All</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--All task drop down end-->
+                    </li>
+                    <li class="dropdown">
+                        <!--Notification drop down start-->
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
+                            <span class="fa fa-bell-o"></span>
+                            <span class="badge badge-red">6</span>
+                        </a>
+                        <div class="dropdown-menu right top-notification">
+                            <h4>Notification</h4>
+                            <ul class="ls-feed">
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <span class="label label-red">
+                                            <i class="fa fa-check white"></i>
+                                        </span>
+                                        You have 4 pending tasks.
+                                        <span class="date">Just now</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <span class="label label-light-green">
+                                            <i class="fa fa-bar-chart-o"></i>
+                                        </span>
+                                        Finance Report for year 2013
+                                        <span class="date">30 min</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <span class="label label-lightBlue">
+                                            <i class="fa fa-shopping-cart"></i>
+                                        </span>
+                                        New order received with
+                                        <span class="date">45 min</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <span class="label label-lightBlue">
+                                            <i class="fa fa-user"></i>
+                                        </span>
+                                        5 pending membership
+                                        <span class="date">50 min</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <span class="label label-red">
+                                            <i class="fa fa-bell"></i>
+                                        </span>
+                                        Server hardware upgraded
+                                        <span class="date">1 hr</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <span class="label label-blue">
+                                            <i class="fa fa-briefcase"></i>
+                                        </span>
+                                        IPO Report for
+                                        <span class="lightGreen">2014</span>
+                                        <span class="date">5 hrs</span>
+                                    </a>
+                                </li>
+                                <li class="only-link">
+                                    <a href="javascript:void(0)">View All</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--Notification drop down end-->
+                    </li>
+                    <li class="dropdown">
+                        <!--Email drop down start-->
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
+                            <span class="fa fa-envelope-o"></span>
+                            <span class="badge badge-red">3</span>
+                        </a>
+                        <div class="dropdown-menu right email-notification">
+                            <h4>Email</h4>
+                            <ul class="email-top">
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <div class="email-top-image">
+                                            <img class="rounded" src="assets/images/demo/avatar-80.png" alt="user image" />
+                                        </div>
+                                        <div class="email-top-content">
+                                            John Doe <div>Sample Mail 1</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <div class="email-top-image">
+                                            <img class="rounded" src="assets/images/demo/avatar-80.png" alt="user image" />
+                                        </div>
+                                        <div class="email-top-content">
+                                            John Doe <div>Sample Mail 2</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <div class="email-top-image">
+                                            <img class="rounded" src="assets/images/demo/avatar-80.png" alt="user image" />
+                                        </div>
+                                        <div class="email-top-content">
+                                            John Doe <div> Sample Mail 4</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="only-link">
+                                    <a href="mail.html">View All</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--Email drop down end-->
+                    </li>
+                    <li class="hidden-xs">
+                        <a class="right-sidebar" href="javascript:void(0)">
+                            <i class="fa fa-comment-o"></i>
+                        </a>
+                    </li>
+                    <li class="hidden-xs">
+                        <a class="right-sidebar-setting" href="javascript:void(0)">
+                            <i class="fa fa-cogs"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="lock-screen.html">
+                            <i class="fa fa-lock"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="login.html">
+                            <i class="fa fa-power-off"></i>
+                        </a>
+                    </li>
+                </ul>
+                <!--Top Navigation End-->
+            </div>
+        </div>
+    </nav>
+    <!--Navigation Top Bar End-->
+    <section id="main-container">
+        <!--Left navigation section start-->
+        <section id="left-navigation">
+
+            <!--Phone Navigation Menu icon start-->
+            <div class="phone-nav-box visible-xs">
+                <a class="phone-logo" href="index.html" title="">
+                    <h1>Fickle</h1>
+                </a>
+                <a class="phone-nav-control" href="javascript:void(0)">
+                    <span class="fa fa-bars"></span>
+                </a>
+                <div class="clearfix"></div>
+            </div>
+            <!--Phone Navigation Menu icon start-->
+            <!--Left navigation start-->
+            <ul class="mainNav">
+                <li>
+                    <a href="index.html">
+                        <i class="fa fa-dashboard"></i> <span>首页</span>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="#">
+                        <i class="fa fa-glass"></i>
+                        <span>会员管理</span>
+                    </a>
+                    <ul>
+                        <li><a class="active" href="sample-form.html">新建会员</a></li>
+                        <li><a href="form-wizard.html">会员管理</a></li>
+                        <li><a href="form-validation.html">会员充值</a></li>
+                        <li><a href="editor.html">积分兑换</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa fa-flag"></i>
+                        <span>消费收银</span>
+                    </a>
+                    <ul>
+                        <li><a href="button-switch.html">普通消费</a></li>
+                        <li><a href="checkbox-radio.html">商品消费</a></li>
+                        <li><a href="select-tag.html">次计消费</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa fa-flag"></i>
+                        <span>退款退单</span>
+                    </a>
+                    <ul>
+                        <li><a href="knob-slider.html">普通消费退单</a></li>
+                        <li><a href="knob-slider.html">商品消费退单</a></li>
+                        <li><a href="select-tag.html">计次消费退单</a></li>
+                        <li><a href="picker-tool.html">充值退款</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa fa-clock-o"></i> <span>统计查询</span>
+                    </a>
+                    <ul>
+                        <li><a href="button-switch.html">会员统计</a></li>
+                        <li><a href="checkbox-radio.html">消费统计</a></li>
+                        <li><a href="select-tag.html">充值统计</a></li>
+                        <li><a href="knob-slider.html">导购提成统计</a></li>
+                        <li><a href="knob-slider.html">积分兑换统计</a></li>
+                        <li><a href="select-tag.html">商品统计</a></li>
+                        <li><a href="picker-tool.html">短信统计</a></li>
+                        <li><a href="picker-tool.html">会员推荐统计</a></li>
+                        <li><a href="picker-tool.html">会员分析</a></li>
+                        <li><a href="picker-tool.html">操作日志</a></li>
+                        <li><a href="picker-tool.html">登录历史</a></li>
+                    </ul>
+                </li>
+                
+                <li>
+                    <a href="#">
+                        <i class="fa fa-flag"></i>
+                        <span>系统设置</span>
+                    </a>
+                    <ul>
+                        <li><a href="button-switch.html">企业设置</a></li>
+                        <li><a href="checkbox-radio.html">店铺设置</a></li>
+                        <li><a href="select-tag.html">会员等级设置</a></li>
+                        <li><a href="knob-slider.html">操作员设置</a></li>
+                        <li><a href="knob-slider.html">员工设置</a></li>
+                        <li><a href="select-tag.html">商品设置</a></li>
+                        <li><a href="picker-tool.html">自定义属性设置</a></li>
+                    </ul>
+                </li>
+                
+            </ul>
+            <!--Left navigation end-->
+        </section>
+        <!--Left navigation section end-->
+        <!--Page main section start-->
+        <section id="min-wrapper">
+            <div id="main-content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!--Top breadcrumb start -->
+                            <ol class="breadcrumb">
+                                <li><a href="#"><i class="fa fa-home"></i></a></li>
+                                <li>会员管理</li>
+                                <li>新建会员</li>
+                            </ol>
+                            <!--Top breadcrumb start -->
+                        </div>
+                    </div>
+                    <!-- Main Content Element  Start-->
+                 
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">新建会员</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <form action="" class="form-horizontal ls_form">
+
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">店铺</label>
+                                                    <div class="col-md-10">
+
+                                                        <select class="form-control">
+                                                            <option selected="selected">国贸店</option>
+                                                            <option>海淀店</option>
+                                                            <option>中关村店</option>
+                                                        </select>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">会员等级</label>
+                                                    <div class="col-md-10">
+                                                        <select class="form-control">
+                                                            <option>普通会员</option>
+                                                            <option selected ="selected">VIP会员</option>
+                                                            <option>钻石会员</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                           
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group has-error">
+                                                    <label class="col-md-2 control-label">会员编号</label>
+                                                    <div class="col-md-10">
+
+                                                        <input type="text" class="form-control" name="help_text">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">姓名</label>
+                                                    <div class="col-md-10">
+                                                        <input type="text" class="form-control" name="help_text">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">手机</label>
+                                                    <div class="col-md-10">
+
+                                                        <input type="text" class="form-control" name="help_text">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">性别</label>
+                                                    <div class="col-md-10">
+                                                        <select class="form-control">
+                                                            <option selected="selected">未知</option>
+                                                            <option>男</option>
+                                                            <option>女</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">会员密码</label>
+                                                    <div class="col-md-10">
+
+                                                        <input type="password" class="form-control" name="help_text">
+                                                        <span class="help-block m-b-none">如果设置了密码，会员消费时则需要输入密码。</span>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">重复密码</label>
+                                                    <div class="col-md-10">
+                                                        <input type="password" class="form-control" name="help_text">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">出生年</label>
+                                                    <div class="col-md-10">
+
+                                                                <select class="form-control">
+                                                                    <option>1920</option>
+                                                                    <option>1921</option>
+                                                                    <option>1922</option>
+                                                                    <option>1923</option>
+                                                                    <option>1924</option>
+                                                                    <option>1925</option>
+                                                                    <option>1926</option>
+                                                                    <option>1927</option>
+                                                                    <option>1928</option>
+                                                                    <option>1929</option>
+                                                                    <option>1930</option>
+                                                                    <option>1931</option>
+                                                                    <option>1932</option>
+                                                                    <option>1933</option>
+                                                                    <option>1934</option>
+                                                                    <option>1935</option>
+                                                                    <option>1936</option>
+                                                                    <option>1937</option>
+                                                                    <option>1938</option>
+                                                                    <option>1939</option>
+                                                                    <option>1940</option>
+                                                                    <option>1941</option>
+                                                                    <option>1942</option>
+                                                                    <option>1943</option>
+                                                                    <option>1944</option>
+                                                                    <option>1945</option>
+                                                                    <option>1946</option>
+                                                                    <option>1947</option>
+                                                                    <option>1948</option>
+                                                                    <option>1949</option>
+                                                                    <option>1950</option>
+                                                                    <option>1951</option>
+                                                                    <option>1952</option>
+                                                                    <option>1953</option>
+                                                                    <option>1954</option>
+                                                                    <option>1955</option>
+                                                                    <option>1956</option>
+                                                                    <option>1957</option>
+                                                                    <option>1958</option>
+                                                                    <option>1959</option>
+                                                                    <option>1960</option>
+                                                                    <option>1961</option>
+                                                                    <option>1962</option>
+                                                                    <option>1963</option>
+                                                                    <option>1964</option>
+                                                                    <option>1965</option>
+                                                                    <option>1966</option>
+                                                                    <option>1967</option>
+                                                                    <option>1968</option>
+                                                                    <option>1969</option>
+                                                                    <option>1970</option>
+                                                                    <option>1971</option>
+                                                                    <option>1972</option>
+                                                                    <option>1973</option>
+                                                                    <option>1974</option>
+                                                                    <option>1975</option>
+                                                                    <option>1976</option>
+                                                                    <option>1977</option>
+                                                                    <option>1978</option>
+                                                                    <option>1979</option>
+                                                                    <option>1980</option>
+                                                                    <option>1981</option>
+                                                                    <option>1982</option>
+                                                                    <option>1983</option>
+                                                                    <option>1984</option>
+                                                                    <option>1985</option>
+                                                                    <option>1986</option>
+                                                                    <option>1987</option>
+                                                                    <option>1988</option>
+                                                                    <option>1989</option>
+                                                                    <option>1990</option>
+                                                                    <option>1991</option>
+                                                                    <option>1992</option>
+                                                                    <option>1993</option>
+                                                                    <option>1994</option>
+                                                                    <option>1995</option>
+                                                                    <option>1996</option>
+                                                                    <option>1997</option>
+                                                                    <option>1998</option>
+                                                                    <option>1999</option>
+                                                                    <option>2000</option>
+                                                                    <option>2001</option>
+                                                                    <option>2002</option>
+                                                                    <option>2003</option>
+                                                                    <option>2004</option>
+                                                                    <option>2005</option>
+                                                                    <option>2006</option>
+                                                                    <option>2007</option>
+                                                                    <option>2008</option>
+                                                                    <option>2009</option>
+                                                                    <option>2010</option>
+                                                                    <option>2011</option>
+                                                                    <option>2012</option>
+                                                                    <option>2013</option>
+                                                                    <option>2014</option>
+                                                                    <option>2015</option>
+                                                                    <option selected="selected"> </option>
+                                                                </select>
+
+                                                        </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">出生月日</label>
+                                                    <div class="col-md-10">
+                                                        <div class="row">
+
+                                                            <div class="col-md-6">
+                                                                <select class="form-control">
+                                                                    <option>1月</option>
+                                                                    <option>2月</option>
+                                                                    <option>3月</option>
+                                                                    <option>4月</option>
+                                                                    <option>5月</option>
+                                                                    <option>6月</option>
+                                                                    <option>7月</option>
+                                                                    <option>8月</option>
+                                                                    <option>9月</option>
+                                                                    <option>10月</option>
+                                                                    <option>11月</option>
+                                                                    <option>12月</option>
+                                                                    <option selected="selected"> </option>
+                                                                </select>
+
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <select class="form-control">
+                                                                    <option>1日</option>
+                                                                    <option>2日</option>
+                                                                    <option>3日</option>
+                                                                    <option>4日</option>
+                                                                    <option>5日</option>
+                                                                    <option>6日</option>
+                                                                    <option>7日</option>
+                                                                    <option>8日</option>
+                                                                    <option>9日</option>
+                                                                    <option>10日</option>
+                                                                    <option>11日</option>
+                                                                    <option>12日</option>
+                                                                    <option>13日</option>
+                                                                    <option>14日</option>
+                                                                    <option>15日</option>
+                                                                    <option>16日</option>
+                                                                    <option>17日</option>
+                                                                    <option>18日</option>
+                                                                    <option>19日</option>
+                                                                    <option>20日</option>
+                                                                    <option>21日</option>
+                                                                    <option>22日</option>
+                                                                    <option>23日</option>
+                                                                    <option>24日</option>
+                                                                    <option>25日</option>
+                                                                    <option>26日</option>
+                                                                    <option>27日</option>
+                                                                    <option>28日</option>
+                                                                    <option>29日</option>
+                                                                    <option>30日</option>
+                                                                    <option>31日</option>
+                                                                    <option selected="selected"> </option>
+                                                                </select>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">QQ</label>
+                                                    <div class="col-md-10">
+
+                                                        <input type="text" class="form-control" name="help_text">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">微信</label>
+                                                    <div class="col-md-10">
+                                                        <input type="text" class="form-control" name="help_text">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">电子邮件</label>
+                                                    <div class="col-md-10">
+
+                                                        <input type="text" class="form-control" name="help_text">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">证件号码</label>
+                                                    <div class="col-md-10">
+                                                        <input type="text" class="form-control" name="help_text">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">固定电话</label>
+                                                    <div class="col-md-10">
+
+                                                        <input type="text" class="form-control" name="help_text">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">工作单位</label>
+                                                    <div class="col-md-10">
+                                                        <input type="text" class="form-control" name="help_text">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
+                                                    <label class="col-md-1 control-label">地址</label>
+                                                    <div class="col-md-11">
+
+                                                        <input type="text" class="form-control" name="help_text">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">自定义1</label>
+                                                    <div class="col-md-10">
+
+                                                        <input type="text" class="form-control" name="help_text">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">自定义2</label>
+                                                    <div class="col-md-10">
+                                                        <input type="text" class="form-control" name="help_text">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">自定义3</label>
+                                                    <div class="col-md-10">
+
+                                                        <input type="text" class="form-control" name="help_text">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">自定义4</label>
+                                                    <div class="col-md-10">
+                                                        <input type="text" class="form-control" name="help_text">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">自定义5</label>
+                                                    <div class="col-md-10">
+
+                                                        <input type="text" class="form-control" name="help_text">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">自定义6</label>
+                                                    <div class="col-md-10">
+                                                        <input type="text" class="form-control" name="help_text">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">自定义7</label>
+                                                    <div class="col-md-10">
+
+                                                        <input type="text" class="form-control" name="help_text">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">自定义8</label>
+                                                    <div class="col-md-10">
+                                                        <input type="text" class="form-control" name="help_text">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
+                                                    <label class="col-md-1 control-label">自定义9</label>
+                                                    <div class="col-md-11">
+
+                                                        <input type="text" class="form-control" name="help_text">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
+                                                    <label class="col-md-1 control-label">自定义10</label>
+                                                    <div class="col-md-11">
+
+                                                        <input type="text" class="form-control" name="help_text">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
+                                                    <label class="col-md-1 control-label">备注</label>
+                                                    <div class="col-md-11">
+
+                                                        <input type="text" class="form-control" name="help_text">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">有效期</label>
+                                                    <div class="col-md-10">
+
+                                                        <input type="text" class="form-control" name="help_text">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">推荐人</label>
+                                                    <div class="col-md-10">
+                                                        <input type="text" class="form-control" name="help_text">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">&nbsp;</label>
+                                                    <div class="col-md-10">
+                                                        <button class="btn btn-sm ls-blue-btn" type="submit">新建会员</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                
+                                            </div>
+
+                                        </div>
+                                     
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Main Content Element  End-->
+                </div>
+            </div>
+
+        </section>
+        <!--Page main section end -->
+        
+    </section>
+    <!--Layout Script start -->
+    <script type="text/javascript" src="assets/js/color.js"></script>
+    <script type="text/javascript" src="assets/js/lib/jquery-1.11.min.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/js/multipleAccordion.js"></script>
+    <!--easing Library Script Start -->
+    <script src="assets/js/lib/jquery.easing.js"></script>
+    <!--easing Library Script End -->
+    <!--Nano Scroll Script Start -->
+    <script src="assets/js/jquery.nanoscroller.min.js"></script>
+    <!--Nano Scroll Script End -->
+    <!--switchery Script Start -->
+    <script src="assets/js/switchery.min.js"></script>
+    <!--switchery Script End -->
+    <!--bootstrap switch Button Script Start-->
+    <script src="assets/js/bootstrap-switch.js"></script>
+    <!--bootstrap switch Button Script End-->
+    <!--easypie Library Script Start -->
+    <script src="assets/js/jquery.easypiechart.min.js"></script>
+    <!--easypie Library Script Start -->
+    <!--bootstrap-progressbar Library script Start-->
+    <script src="assets/js/bootstrap-progressbar.min.js"></script>
+    <!--bootstrap-progressbar Library script End-->
+    <script type="text/javascript" src="assets/js/pages/layout.js"></script>
+    <!--Layout Script End -->
+    <!--Upload button Script Start-->
+    <script src="assets/js/fileinput.min.js"></script>
+    <!--Upload button Script End-->
+    <!--Auto resize  text area Script Start-->
+    <script src="assets/js/jquery.autosize.js"></script>
+    <!--Auto resize  text area Script Start-->
+    <script src="assets/js/pages/sampleForm.js"></script>
+
+
+</body>
+</html>
